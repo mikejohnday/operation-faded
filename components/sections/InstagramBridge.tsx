@@ -36,11 +36,10 @@ export default function InstagramBridge() {
           id="instagram-heading"
           className="mt-2 font-display text-5xl tracking-wide text-fg sm:text-7xl"
         >
-          The deeper archive.
+          More from Faded.
         </h2>
         <p className="mt-4 max-w-xl text-muted">
-          More cuts, more chat, more Faded &mdash; this is where the day-to-day
-          lives.
+          More cuts, more chat, more of the shop&apos;s day-to-day.
         </p>
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">

@@ -19,8 +19,7 @@ export default function TeamSection() {
           Meet the faces behind the fades
         </h2>
         <p className="mt-4 max-w-xl text-muted">
-          Elliot and Bailey, Faded&apos;s co-owners &mdash; two faces from
-          the team you could be sitting down with.
+          Faded&apos;s co-owners, and two of the faces behind the fades.
         </p>
 
         <div className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 sm:mt-16 sm:grid sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] sm:gap-10 sm:overflow-visible sm:pb-0">

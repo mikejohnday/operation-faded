@@ -26,7 +26,7 @@ export default function SocialProofSection() {
           >
             &ldquo;
           </span>
-          <blockquote className="relative max-w-2xl text-2xl leading-snug font-semibold text-fg sm:text-4xl">
+          <blockquote className="relative max-w-xl text-2xl leading-snug font-semibold text-fg sm:text-4xl">
             {reviews.quote}
           </blockquote>
         </div>
