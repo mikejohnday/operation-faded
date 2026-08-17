@@ -34,23 +34,27 @@ export default function InstagramBridge() {
         </p>
         <h2
           id="instagram-heading"
-          className="mt-2 font-display text-4xl tracking-wide text-fg sm:text-6xl"
+          className="mt-2 font-display text-5xl tracking-wide text-fg sm:text-7xl"
         >
-          More of this on Instagram.
+          The deeper archive.
         </h2>
+        <p className="mt-4 max-w-xl text-muted">
+          More cuts, more chat, more Faded &mdash; this is where the day-to-day
+          lives.
+        </p>
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {tiles.map((tile) => (
             <div
               key={tile.src}
-              className="relative aspect-[4/5] overflow-hidden rounded-sm bg-surface"
+              className="relative aspect-[4/5] overflow-hidden bg-surface"
             >
               <Image
                 src={tile.src}
                 alt={tile.alt}
                 fill
                 sizes="(min-width: 640px) 25vw, 50vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 ease-out [@media(hover:hover)]:hover:scale-[1.04]"
               />
             </div>
           ))}

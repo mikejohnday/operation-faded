@@ -89,7 +89,11 @@ export const reviews = {
 
 export const offer = {
   code: "FADED25",
-  headline: "25% off your haircut",
+  // Split out for the oversized-numeral graphic treatment — same fact
+  // ("25% off your haircut"), just structured so the percentage can carry
+  // more visual weight without string-parsing a single headline.
+  percentage: "25%",
+  headlineRest: "off your haircut",
   description: "Book with the team via Squire and use the code at checkout.",
   // Deliberately neutral — discovery §11 found genuinely conflicting
   // eligibility wording across Faded's own posts. This prototype does not
@@ -98,12 +102,14 @@ export const offer = {
 } as const;
 
 export const hero = {
-  // "Get faded." is Faded's own bio line, reused verbatim rather than
-  // invented (brief §6).
-  headline: "Get faded.",
+  // "Get faded." is Faded's own bio line. Uppercased for the refinement
+  // pass to test whether it reads closer to Faded's own bold condensed
+  // graphic language — still the same real phrase, not invented (brief §6).
+  headline: "GET FADED.",
   // The "step away from the noise" theme — an emerging, not yet confirmed,
   // brand pillar (discovery §7) — tested here as a secondary supporting
-  // line, exactly as brief §6 suggests.
+  // line, exactly as brief §6 suggests. Copy unchanged from V1; only its
+  // visual scale/placement was revisited in the refinement pass.
   supporting: "Step away from the noise. Sit back, switch off, and let the team take care of the rest.",
 } as const;
 

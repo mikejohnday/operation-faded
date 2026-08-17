@@ -56,7 +56,7 @@ export default function FloatingBookButton() {
       <Button
         href={urls.squireBooking}
         variant="primary"
-        className="px-5 py-3 text-xs shadow-lg shadow-black/50"
+        className="px-5 py-3 text-xs shadow-md shadow-black/40"
       >
         Book
       </Button>

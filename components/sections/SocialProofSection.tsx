@@ -14,12 +14,24 @@ export default function SocialProofSection() {
         </p>
         <h2
           id="reviews-heading"
-          className="mt-2 font-display text-4xl tracking-wide text-fg sm:text-6xl"
+          className="mt-2 font-display text-5xl tracking-wide text-fg sm:text-7xl"
         >
           Don&apos;t take our word for it.
         </h2>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+        <div className="relative mt-14 sm:mt-20">
+          <span
+            aria-hidden="true"
+            className="absolute -top-10 -left-2 font-display text-[8rem] text-fg/10 select-none sm:-top-16 sm:text-[12rem]"
+          >
+            &ldquo;
+          </span>
+          <blockquote className="relative font-display text-3xl leading-[1.05] tracking-wide text-fg sm:text-5xl">
+            {reviews.quote}
+          </blockquote>
+        </div>
+
+        <div className="mt-14 flex flex-wrap gap-x-12 gap-y-8 border-t border-border pt-10 sm:mt-20">
           <ReviewBlock
             label={reviews.google.label}
             rating={reviews.google.rating}
@@ -31,10 +43,6 @@ export default function SocialProofSection() {
             count={reviews.squire.count}
           />
         </div>
-
-        <blockquote className="mt-10 border-l-2 border-fg/30 pl-6 font-display text-2xl leading-snug tracking-wide text-fg sm:text-3xl">
-          &ldquo;{reviews.quote}&rdquo;
-        </blockquote>
       </div>
     </section>
   );

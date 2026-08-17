@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { hero, urls } from "@/content/site-content";
 import Button from "@/components/ui/Button";
+import CornerFrame from "@/components/ui/CornerFrame";
+import GhostType from "@/components/ui/GhostType";
 
 export default function Hero() {
   return (
@@ -17,21 +19,28 @@ export default function Hero() {
         sizes="100vw"
         className="object-cover object-top"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/70 to-bg/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/75 to-bg/30" />
+
+      <GhostType className="top-[-0.1em] -right-6 text-[9rem] tracking-tight sm:text-[16rem]">
+        FADED
+      </GhostType>
 
       <div className="relative z-10 max-w-2xl">
-        <p className="text-xs font-medium tracking-[0.2em] text-muted uppercase">
-          Faded Barbers &middot; Selby
-        </p>
+        <div className="relative inline-block px-4 py-2">
+          <CornerFrame />
+          <p className="text-xs font-medium tracking-[0.25em] text-muted uppercase">
+            Faded Barbers &middot; Selby
+          </p>
+        </div>
         <h1
           id="hero-heading"
-          className="mt-3 font-display text-6xl leading-[0.95] tracking-wide text-fg sm:text-8xl"
+          className="mt-4 font-display text-7xl leading-[0.88] tracking-wide text-fg sm:text-9xl"
         >
           {hero.headline}
         </h1>
-        <p className="mt-5 max-w-md text-base text-muted sm:text-lg">
-          {hero.supporting}
-        </p>
+        <div className="mt-6 max-w-xs border-l-2 border-fg/30 pl-4 sm:max-w-sm">
+          <p className="text-sm text-muted sm:text-base">{hero.supporting}</p>
+        </div>
         <div className="mt-8">
           <Button href={urls.squireBooking}>Book via Squire</Button>
         </div>
