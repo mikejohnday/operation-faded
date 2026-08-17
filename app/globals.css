@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Prototype brand tokens (build plan §7). Strictly monochrome — no accent
+     colour. Off-black/off-white rather than pure black/white so grain
+     texture keeps reading against both. */
+  --color-bg: #0b0b0c;
+  --color-fg: #f4f3f1;
+  --color-surface: #1c1b1d;
+  --color-border: #333133;
+  --color-muted: #a8a6a3;
+
+  --font-display: var(--font-anton), "Arial Narrow", system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI",
+    sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--color-bg);
+  --color-fg: var(--color-fg);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-muted: var(--color-muted);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  background: var(--color-bg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+/* Visible, brand-consistent focus ring (build plan §10) — never suppressed
+   without a replacement. */
+:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 3px;
+}
+
+/* Recreated tileable grain texture (build plan §7/§9) — never sourced from
+   screenshot pixels, which are too compressed to scale cleanly. */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+.grain-overlay svg {
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grain-overlay svg {
+    animation: grain-drift 9s steps(8) infinite;
+  }
+}
+
+@keyframes grain-drift {
+  0% {
+    transform: translate(0%, 0%);
+  }
+  12.5% {
+    transform: translate(-1%, 1%);
+  }
+  25% {
+    transform: translate(1%, -1%);
+  }
+  37.5% {
+    transform: translate(-1%, -1%);
+  }
+  50% {
+    transform: translate(1%, 1%);
+  }
+  62.5% {
+    transform: translate(-2%, 0%);
+  }
+  75% {
+    transform: translate(0%, -2%);
+  }
+  87.5% {
+    transform: translate(1%, 2%);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+
+/* Grain-to-clear reveal (build plan §9) — default state is fully visible;
+   JS only ever adds the "is-revealed" class, so a JS failure never hides
+   content. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    filter: blur(6px) grayscale(0.4);
+    transform: translateY(12px);
+    transition:
+      opacity 0.7s ease-out,
+      filter 0.7s ease-out,
+      transform 0.7s ease-out;
+  }
+
+  [data-reveal].is-revealed {
+    opacity: 1;
+    filter: blur(0) grayscale(0);
+    transform: translateY(0);
+  }
 }
